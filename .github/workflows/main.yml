@@ -1,4 +1,7 @@
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: '1 0 * * *'
 
 jobs:
   main:
