@@ -7,7 +7,7 @@ buildcmd() {
   buildah run --network host "${c}" -- "$@"
 }
 
-env
+env | sort
 
 buildcmd emerge-webrsync
 buildcmd mkdir -p /etc/portage/package.use /repo
@@ -20,6 +20,6 @@ buildcmd bash -c 'echo FEATURES="-ipc-sandbox -network-sandbox" >> /etc/portage/
 buildah config --entrypoint "/usr/bin/repoman" "${c}"
 buildah config --workingdir "/repo" "${c}"
 
-buildah commit --squash --rm "${c}" "ghcr.io/daugustin/repoman:latest"
+buildah commit --format=docker --squash --rm "${c}" "ghcr.io/${GITHUB_REPOSITORY_OWNER}/repoman:latest"
 
-buildah push "ghcr.io/daugustin/repoman:latest"
+buildah push "ghcr.io/${GITHUB_REPOSITORY_OWNER}/repoman:latest"
