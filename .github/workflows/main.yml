@@ -22,3 +22,8 @@ jobs:
         with:
           push: true
           tags: ghcr.io/daugustin/repoman:latest
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build image
+        run: make_image.sh
