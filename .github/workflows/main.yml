@@ -25,5 +25,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout code
+        uses: actions/checkout@v2
       - name: build image
-        run: make_image.sh
+        run: ./make_image.sh
