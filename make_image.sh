@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-c=$(buildah from gentoo/stage3-amd64)
+c=$(buildah from gentoo/stage3)
 
 buildcmd() {
   buildah run --network host "${c}" -- "$@"
