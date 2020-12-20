@@ -16,7 +16,7 @@ buildcmd emerge --quiet-build -NDqu1 @world
 buildcmd emerge --quiet-build -q dev-vcs/git app-portage/repoman
 # shellcheck disable=SC2016
 buildcmd bash -c 'source /etc/portage/make.conf && rm "${DISTDIR}"/*'
-buildcmd bash -c 'echo FEATURES="-ipc-sandbox -network-sandbox" >> /etc/portage/make.conf'
+buildcmd echo 'FEATURES="-ipc-sandbox -network-sandbox"' \| tee -a /etc/portage/make.conf
 
 buildah config --entrypoint "/usr/bin/repoman" "${c}"
 buildah config --workingdir "/repo" "${c}"
