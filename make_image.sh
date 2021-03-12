@@ -12,7 +12,7 @@ env | sort
 buildcmd emerge-webrsync
 buildcmd mkdir -p /etc/portage/package.use /repo
 buildcmd bash -c 'echo "dev-vcs/git -perl" > /etc/portage/package.use/git'
-buildcmd emerge --quiet-build -NDqu1 @world
+buildcmd emerge --quiet-build -NDqu1 --exclude gcc @world
 buildcmd emerge --quiet-build -q dev-vcs/git app-portage/repoman
 # shellcheck disable=SC2016
 buildcmd bash -c 'source /etc/portage/make.conf && rm "${DISTDIR}"/*'
